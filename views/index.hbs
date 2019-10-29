@@ -1,0 +1,29 @@
+<head>
+  <title>cdn.serux.pro</title>
+  <!-- Same here (see below comment) -->
+  <script src="f.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+  <div class="navbar">
+    <span>cdn.serux.pro</span>
+    <!-- Allow changing this somehow. Partial that's constructed by handlebars? Default parameter perhaps? Specified in config. !-->
+    <div class="nav-buttons">
+      <a href="{{url}}">
+        <button>{{text}}</button>
+      </a>
+    </div>
+  </div>
+  <div class="container">
+    <div class="uploader">
+      <input id="file" name="file" type="file">
+      <button id="upload" onclick="upload()">Upload</button>
+      <div class="progressBar" id="progress"></div>
+      <input id="url-box" readonly type="text" style="display: none;">
+    </div>
+  </div>
+</body>
