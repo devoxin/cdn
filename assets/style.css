@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  font-family: 'Roboto Light', sans-serif;
+  background: #24272C;
+  color: white;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 75px;
+  background: #36393E;
+}
+
+.navbar span {
+  padding-left: 15px;
+  font-size: 20px;
+  user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+}
+
+.nav-buttons {
+  margin-right: 15px;
+}
+
+.nav-buttons button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  color: white;
+  height: 100%;
+  width: 75px;
+  cursor: pointer;
+  transition: 0.5s;
+  font-family: 'Roboto Light';
+}
+
+.nav-buttons button:hover {
+  background-color: rgb(70, 70, 70);
+  transition: 0.5s;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(100% - 75px);
+}
+
+.uploader {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+}
+
+.uploader input[type=file] {
+  font-family: 'Roboto Light', sans-serif;
+  border: 2px solid rgb(120, 120, 120);
+  box-sizing: border-box;
+  padding: 20px;
+  background: none;
+}
+
+.uploader input[type=text] {
+  position: relative;
+  top: 30px;
+  background: rgb(70, 70, 70);
+  border: 1px solid black;
+  padding: 6px;
+  color: white;
+  outline: none;
+}
+
+.uploader input[type=text]::placeholder {
+  color: rgb(170, 170, 170);
+}
+
+.uploader button {
+  position: relative;
+  top: 20px;
+  background: rgb(70, 70, 70);
+  border: none;
+  color: rgb(170, 170, 170);
+  padding: 5px;
+  box-shadow: 0px 3px 0px 0px rgb(20, 20, 20);
+  outline: none;
+}
+
+.uploader button:active {
+  box-shadow: none;
+  top: 22px;
+}
+
+.progressBar {
+  background-color: white;
+  width: 0px;
+  height: 1px;
+  position: relative;
+  top: 23px;
+}
