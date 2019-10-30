@@ -7,14 +7,17 @@ const CLIENT_ID = ':)';
 const CLIENT_SECRET = ':)';
 const REDIRECT_URL = process.platform === 'win32' ? 'http://ADDRESS:PORT/auth/handshake' : 'LIVE DOMAIN';
 const API_URL = 'https://discordapp.com/api/v7';
-const DISCORD_URL = `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URL)}&response_type=code&scope=identify&prompt=none`
+const DISCORD_URL = `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URL)}&response_type=code&scope=identify&prompt=none`;
 const _seed = ':)';
 
 function sign (content, key, options = {}) {
   return new Promise((resolve, reject) => {
     jwt.sign(content, key, options, (err, token) => {
-      if (err) reject(err)
-      else resolve(token);
+      if (err) {
+        reject(err);
+      } else {
+        resolve(token);
+      }
     });
   });
 }
@@ -22,8 +25,11 @@ function sign (content, key, options = {}) {
 function verify (token, key, options = {}) {
   return new Promise((resolve, reject) => {
     jwt.verify(token, key, options, (err, decoded) => {
-      if (err) reject(err)
-      else resolve(decoded);
+      if (err) {
+        reject(err);
+      } else {
+        resolve(decoded);
+      }
     });
   });
 }
@@ -59,7 +65,7 @@ handler.get('/handshake', async (req, res) => {
     .catch(e => console.log(e));
 
   if (!auth) {
-    console.log('no auth')
+    console.log('no auth');
     return res.redirect('/');
   }
 
@@ -69,14 +75,14 @@ handler.get('/handshake', async (req, res) => {
     .catch(() => null);
 
   if (!currentUser) {
-    console.log('no current user')
+    console.log('no current user');
     return res.redirect('/');
   }
 
   const webToken = await sign(currentUser, _seed);
 
   if (!webToken) {
-    console.log('no web token')
+    console.log('no web token');
     return res.redirect('/');
   }
 
@@ -93,4 +99,4 @@ handler.get('/logout', (req, res) => {
 
 module.exports = {
   getUser, handler
-}
+};
