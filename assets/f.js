@@ -1,4 +1,4 @@
-function upload() {
+function upload () {
   const button = document.querySelector('button#upload');
   button.setAttribute('disabled', '');
   button.innerHTML = 'Please wait...';
@@ -14,7 +14,7 @@ function upload() {
     data: file,
     responseType: 'text',
     onUploadProgress: (e) => {
-      const percentCompleted = (e.loaded / e.total) * 100;
+      const percentCompleted = e.loaded / e.total * 100;
       document.getElementById('progress').style.width = `${percentCompleted}%`;
     }
   })
@@ -22,7 +22,7 @@ function upload() {
       /**
        * @TODO Full URL returned by server. Domain specified in config.
       */
-      const link = `https://serux.pro/${data}`
+      const link = `https://serux.pro/${data}`;
       if (navigator && navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(link)
           .then(() => {
@@ -47,9 +47,9 @@ function upload() {
     });
 }
 
-function showLink(link) {
+function showLink (link) {
   const urlbox = document.getElementById('url-box');
   urlbox.value = link;
   urlbox.removeAttribute('style');
-  alert(`Unable to copy URL to clipboard!`);
+  alert('Unable to copy URL to clipboard!');
 }

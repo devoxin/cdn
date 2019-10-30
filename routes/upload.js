@@ -1,15 +1,14 @@
-const { storage } = require('../config.json');
 const { isUserAuthorized } = require('../utils/checks.js');
-const { promises: { access, writeFile }, constants } = require('fs');
+const { save } = require('../utils/write.js');
 const multer = require('multer')();
 
 module.exports = {
   method: 'post',
   path: '/upload',
   middleware: [multer.single('file')],
-  handler: async ({ user, file }, res) => {
+  handler: ({ user, file }, res) => {
     if (!user) {
-      return res.status(401).send('You must login first.');
+      return res.status(401).send('This endpoint requires valid authorization.');
     }
 
     if (!isUserAuthorized(user.id)) {
@@ -17,23 +16,15 @@ module.exports = {
     }
 
     if (!file) {
-      return res.status(400).send('You need to provide a file.');
+      return res.status(400).send('A file must be provided.');
     }
 
-    const exists = await access(`${storage.directory}/${file.originalname}`, constants.R_OK)
-      .then(() => true)
-      .catch(() => false);
-
-    if (exists) {
-      return res.status(400).send('A file with that name already exists!');
-    }
-
-    writeFile(`${path}/${file.originalname}`, file.buffer)
-      .then(() => {
-        res.send(encodeURIComponent(file.originalname));
+    save(file.originalname, file.buffer)
+      .then(path => {
+        res.send(path);
       })
-      .catch(err => {
-        res.status(500).send(err.message);
+      .catch(e => {
+        res.status(e.status).send(e.message);
       });
   }
-}
+};

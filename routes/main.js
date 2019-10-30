@@ -7,4 +7,4 @@ module.exports = {
     const url = !req.user.username ? '/auth/login' : '/auth/logout';
     res.render('index', { text, url });
   }
-}
+};
