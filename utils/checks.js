@@ -1,19 +1,25 @@
+const Database = require('./database.js');
+const db = new Database();
+
+
 /**
  * Checks whether a user ID is in the databaase.
  * @param {string} id The user ID to check.
- * @returns {boolean} Whether the user is authorized.
+ * @returns {Promise<boolean>} Whether the user is authorized.
  */
 function isUserAuthorized (id) {
-  return true;
+  return db.users.findOne({ _id: id })
+    .then(result => !!result);
 }
 
 /**
  * Checks whether a key is in the database.
  * @param {string} key The key to check.
- * @returns {boolean} Whether the key is authorized.
+ * @returns {Promise<boolean>} Whether the key is authorized.
  */
 function isKeyAuthorized (key) {
-  return true;
+  return db.users.findOne({ uploadKey: key })
+    .then(result => !!result);
 }
 
 module.exports = {
