@@ -8,6 +8,10 @@
         "address": "127.0.0.1",
         "port": 80
     },
+    "service": {
+        "domain": "https://mycdn.com",
+        "name": "mycdn"
+    },
     "storage": {
         "directory": "." 
     }

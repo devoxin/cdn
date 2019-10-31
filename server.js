@@ -5,7 +5,6 @@ const { readdirSync } = require('fs');
 const express = require('express');
 
 // Middleware
-//const authHandler = require('./middleware/authHandler.js');
 const cookieParser = require('cookie-parser');
 const handlebars = require('express-handlebars');
 
@@ -18,8 +17,7 @@ app.use(express.static(`${__dirname}/assets`));
 app.use(cookieParser());
 
 // Middleware Registration
-const middleware = readdirSync('./middleware/')
-  .map(path => require(`./middleware/${path}`));
+const middleware = readdirSync('./middleware/').map(path => require(`./middleware/${path}`));
 
 for (const { name, setup } of middleware.filter(m => !m.options.registerLast)) {
   setup(app);
