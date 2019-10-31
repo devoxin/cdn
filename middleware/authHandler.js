@@ -98,5 +98,11 @@ handler.get('/logout', (req, res) => {
 });
 
 module.exports = {
-  getUser, handler
+  name: 'AuthHandler',
+  options: {},
+  getUser, handler,  /** This ugly mess isn't permanent, dw. @TODO */
+  setup: (server) => {
+    server.use(getUser);
+    server.use('/auth', handler);
+  }
 };

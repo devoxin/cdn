@@ -8,8 +8,7 @@ const db = new Database();
  * @returns {Promise<boolean>} Whether the user is authorized.
  */
 function isUserAuthorized (id) {
-  return db.users.findOne({ _id: id })
-    .then(result => !!result);
+  return db.users.findOne({ _id: id }).then(result => !!result);
 }
 
 /**
@@ -18,13 +17,24 @@ function isUserAuthorized (id) {
  * @returns {Promise<boolean>} Whether the key is authorized.
  */
 function isKeyAuthorized (key) {
-  return db.users.findOne({ uploadKey: key })
-    .then(result => !!result);
+  return db.users.findOne({ uploadKey: key }).then(result => !!result);
+}
+
+/**
+ * Checks whether a user has a given flag.
+ * @param {string} id The user ID to check against.
+ * @param {integer} flag The flag to check for.
+ * @returns {Promise<boolean>} Whether the flag exists.
+ */
+function userHasFlag (id, flag) {
+  // eslint-disable-next-line no-extra-parens
+  return db.users.findOne({ _id: id }).then(result => (result.flags & (1 << flag)) !== 0);
 }
 
 module.exports = {
   isKeyAuthorized,
-  isUserAuthorized
+  isUserAuthorized,
+  userHasFlag
 };
 
 /**
@@ -37,7 +47,8 @@ Example DB schema
   "id": "string",
   "uploadKey": "string",
   "deleteAfter": integer
-  "loggingEnabled": boolean
+  "loggingEnabled": boolean,
+  "flags": integer
 }
 
 id
@@ -53,4 +64,7 @@ uploads and can be overriden with a `X-upload-ttl` header.
 loggingEnabled
 Whether uploads are attached to the account. Enabling this will allow users to manage
 files they've uploaded -- such as removing them.
+
+flags
+Any flags against the user's account that gives them special privileges, etc. Such as admin.
 */
