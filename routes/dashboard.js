@@ -14,6 +14,6 @@ module.exports = {
       return res.status(401).send('You do not have access to this service.');
     }
 
-    // res.render('dashboard');
+    res.render('dashboard');
   }
 };
