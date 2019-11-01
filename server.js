@@ -1,4 +1,4 @@
-const { server } = require('./config.json');
+const { server, storage: { directory } } = require('./config.json');
 const { readdirSync } = require('fs');
 
 // Server
@@ -11,9 +11,12 @@ const handlebars = require('express-handlebars');
 const app = express();
 
 // Configuring Server
+const storagePath = directory.startsWith('.') ? __dirname + directory.substring(1) : directory;
+
 app.engine('.hbs', handlebars({ extname: '.hbs' }));
 app.set('view engine', '.hbs');
 app.use(express.static(`${__dirname}/assets`));
+app.use(express.static(storagePath));
 app.use(cookieParser());
 
 // Middleware Registration
