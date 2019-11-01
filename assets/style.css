@@ -5,6 +5,7 @@ body {
   color: white;
 }
 
+/** Head */
 .navbar {
   display: flex;
   align-items: center;
@@ -43,6 +44,7 @@ body {
   transition: 0.5s;
 }
 
+/* Index */
 .container {
   display: flex;
   justify-content: center;
@@ -100,4 +102,36 @@ body {
   height: 1px;
   position: relative;
   top: 23px;
+}
+
+/* Dashboard */
+.centered {
+  display: flex;
+  justify-content: center;
+}
+
+.file-list {
+  margin-top: 20px;
+  border-spacing: 0;
+  font-size: 20px;
+  width: 90%;
+  text-align: center;
+  table-layout: fixed;
+}
+
+.file-list th {
+  background: rgb(18, 20, 22);
+  width: 100%;
+}
+
+.file-list tr:nth-child(odd) {
+  background: rgb(45, 48, 48);
+}
+
+.file-list th {
+  padding: 5px;
+}
+
+.file-list td {
+  padding: 5px 5px;
 }
