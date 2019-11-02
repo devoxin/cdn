@@ -1,8 +1,10 @@
-{{> head}}
+{{#> partialhead}}
+<script src="filepreviewer.js"></script>
+{{/partialhead}}
 
 <body>
   {{> navbar}}
-  <div class="centered">
+  <div class="dashboard-container">
     <table class="file-list">
       <tr>
         <th>Filename</th>
@@ -10,7 +12,16 @@
         <th>Expires</th>
         <th>Options</th>
       </tr>
+      <tr>
+        <td onclick="preview(this)">test.png</td>
+        <td>Never</td>
+        <td>Never</td>
+        <td></td>
+      </tr>
       <!-- files -->
     </table>
+    <div class="previewer-pane hidden">
+      <div>a</div>
+    </div>
   </div>
 </body>

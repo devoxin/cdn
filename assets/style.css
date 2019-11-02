@@ -5,7 +5,7 @@ body {
   color: white;
 }
 
-/** Head */
+/* Head */
 .navbar {
   display: flex;
   align-items: center;
@@ -45,7 +45,7 @@ body {
 }
 
 /* Index */
-.container {
+.index-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -105,13 +105,14 @@ body {
 }
 
 /* Dashboard */
-.centered {
+.dashboard-container {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .file-list {
-  margin-top: 20px;
   border-spacing: 0;
   font-size: 20px;
   width: 90%;
@@ -122,6 +123,7 @@ body {
 .file-list th {
   background: rgb(18, 20, 22);
   width: 100%;
+  padding: 5px;
 }
 
 .file-list tr:nth-child(odd) {
@@ -134,4 +136,37 @@ body {
 
 .file-list td {
   padding: 5px 5px;
+}
+
+.file-list-collapsed {
+  width: 40%;
+}
+
+.previewer-pane {
+  width: 0%;
+  height: 300px;
+  border: 1px solid rgb(20, 20, 20);
+  animation: appear 0.2s forwards;
+}
+
+.hidden {
+  display: none;
+}
+
+.shrink {
+  animation: shrink 0.2s forwards;
+}
+
+/* Animations */
+@keyframes appear {
+  to {
+    width: 300px;
+    margin-left: 10px;
+  }
+}
+
+@keyframes shrink {
+  to {
+    width: calc(90% - 300px);
+  }
 }

@@ -4,7 +4,7 @@ const multer = require('multer')();
 
 module.exports = {
   method: 'post',
-  path: 'sharex',
+  path: '/sharex',
   middleware: [multer.any()],
   handler: async (req, res) => {
     const { authorization } = req.headers;
