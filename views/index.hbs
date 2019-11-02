@@ -1,8 +1,11 @@
-{{> head}}
+{{#> partialhead}}
+<script src="f.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+{{/partialhead}}
 
 <body>
   {{> navbar}}
-  <div class="container">
+  <div class="index-container">
     <div class="uploader">
       <input id="file" name="file" type="file">
       <button id="upload" onclick="upload()">Upload</button>
