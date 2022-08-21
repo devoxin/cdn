@@ -1,4 +1,8 @@
 {
+    "discord": {
+        "client_id": "",
+        "client_secret": ""
+    },
     "mongo": {
         "address": "localhost",
         "port": 27017,
@@ -6,7 +10,8 @@
     },
     "server": {
         "address": "127.0.0.1",
-        "port": 80
+        "port": 80,
+        "seed": ""
     },
     "service": {
         "domain": "https://mycdn.com",
