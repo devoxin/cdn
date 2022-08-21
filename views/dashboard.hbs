@@ -1,27 +1,41 @@
 {{#> partialhead}}
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <script src="filepreviewer.js"></script>
 {{/partialhead}}
 
 <body>
   {{> navbar}}
   <div class="dashboard-container">
+    <div class="sidebar">
+      <button>Account</button>
+      <button>Files</button>
+    </div>
     <table class="file-list">
       <tr>
-        <th>Filename</th>
-        <th>Uploaded</th>
+        <th>Name</th>
+        <th>Added</th>
         <th>Expires</th>
-        <th>Options</th>
       </tr>
       <tr>
-        <td onclick="preview(this)">test.png</td>
-        <td>Never</td>
-        <td>Never</td>
-        <td></td>
+        <td onclick="preview(this)">
+          <i class="material-icons">folder</i>
+          test
+        </td>
+        <td>2022-08-21 21:37</td>
+        <td>2022-08-21 22:16</td>
+      </tr>
+      <tr>
+        <td onclick="preview(this)">
+          <i class="material-icons">insert_drive_file</i>
+          test.png
+        </td>
+        <td>2022-08-21 21:37</td>
+        <td>2022-08-21 22:16</td>
       </tr>
       <!-- files -->
     </table>
-    <div class="previewer-pane hidden">
-      <div>a</div>
+    <div class="previewer-pane" onclick="hide(this)">
+      <img src="/test.jpg">
     </div>
   </div>
 </body>

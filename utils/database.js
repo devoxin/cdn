@@ -7,7 +7,9 @@ class Database {
   }
 
   async connect () {
-    this.client = await MongoClient.connect(`mongodb://${address}:${port}`);
+    this.client = await MongoClient.connect(`mongodb://${address}:${port}`, {
+      useUnifiedTopology: true
+    });
     this.db = this.client.db(db);
     this.users = this.db.collection('users');
   }

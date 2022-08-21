@@ -1,11 +1,8 @@
 function preview (el) {
-  const fileName = el.innerText;
-
-  const fileList = document.querySelector('.file-list');
   const previewPane = document.querySelector('.previewer-pane');
+  previewPane.classList.add('unhide');
+}
 
-  if (previewPane.classList.contains('hidden')) {
-    previewPane.classList.remove('hidden');
-    fileList.classList.add('shrink');
-  }
+function hide (el) {
+  el.classList.remove('unhide');
 }

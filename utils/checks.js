@@ -28,7 +28,8 @@ function isKeyAuthorized (key) {
  */
 function userHasFlag (id, flag) {
   // eslint-disable-next-line no-extra-parens
-  return db.users.findOne({ _id: id }).then(result => (result.flags & (1 << flag)) !== 0);
+  // return db.users.findOne({ _id: id }).then(result => (result.flags & (1 << flag)) !== 0);
+  return db.users.findOne({ _id: id }).then(result => (result.flags & flag === flag);
 }
 
 module.exports = {
