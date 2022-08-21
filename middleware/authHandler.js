@@ -3,12 +3,12 @@ const snekfetch = require('snekfetch'); /** @TODO bad */
 const jwt = require('jsonwebtoken');
 
 const handler = express.Router();
-const CLIENT_ID = ':)';
-const CLIENT_SECRET = ':)';
-const REDIRECT_URL = process.platform === 'win32' ? 'http://ADDRESS:PORT/auth/handshake' : 'LIVE DOMAIN';
+const CLIENT_ID = '517501926124814356';
+const CLIENT_SECRET = 'Z25A5BbPpN1RTHSwQON6TBMGS_gl6w-U';
+const REDIRECT_URL = process.platform === 'win32' ? 'http://localhost:9004/auth/handshake' : 'LIVE DOMAIN';
 const API_URL = 'https://discordapp.com/api/v7';
 const DISCORD_URL = `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URL)}&response_type=code&scope=identify&prompt=none`;
-const _seed = ':)';
+const _seed = 'testinghi';
 
 function sign (content, key, options = {}) {
   return new Promise((resolve, reject) => {

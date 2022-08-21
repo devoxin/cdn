@@ -1,17 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
 body {
   margin: 0;
   font-family: 'Roboto Light', sans-serif;
-  background: #24272C;
+  background: #272727;
   color: white;
 }
 
 /* Head */
 .navbar {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height: 75px;
-  background: #36393E;
+  background: #3f4041;
+  box-shadow: 0px 1px 10px 1px rgb(20, 20, 20);
+  z-index: 10;
 }
 
 .navbar span {
@@ -104,69 +109,120 @@ body {
   top: 23px;
 }
 
+/* Not Found */
+.container {
+  height: 100%;
+  line-height: 1em;
+  margin-left: 10px;
+}
+
 /* Dashboard */
 .dashboard-container {
+  height: calc(100% - 75px);
   display: flex;
   flex-direction: row;
   justify-content: center;
-  margin-top: 20px;
+}
+
+.sidebar {
+  background-color: #303030;
+  width: 300px;
+}
+
+.sidebar button {
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: #303030;
+  color: white;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  height: 50px;
+  transition: background-color 0.2s;
+}
+
+.sidebar button::before {
+  position: absolute;
+  display: inline-block;
+  content: '';
+  left: 0;
+  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+}
+
+.sidebar button:hover {
+  background-color: #404040;
+  transition: background-color 0.2s;
+}
+
+.sidebar button:hover::before {
+  content: '> ';
+  left: 10px;
+}
+
+.sidebar button:active {
+  background-color: #353535;
 }
 
 .file-list {
+  align-self: flex-start;
+  flex-grow: 1;
+  margin: 20px 20px 0px 20px;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
   border-spacing: 0;
-  font-size: 20px;
-  width: 90%;
-  text-align: center;
-  table-layout: fixed;
+  text-align: right;
+  table-layout: auto;
+}
+
+.file-list td:first-child, .file-list th:first-child {
+  width: 70%;
+  text-align: left;
+}
+
+.file-list td:first-child > i {
+  vertical-align: bottom;
+  margin-right: 7px;
 }
 
 .file-list th {
-  background: rgb(18, 20, 22);
-  width: 100%;
-  padding: 5px;
+  background: rgb(25, 25, 25);;
+  padding: 10px;
+  font-weight: 100;
 }
 
 .file-list tr:nth-child(odd) {
-  background: rgb(45, 48, 48);
-}
-
-.file-list th {
-  padding: 5px;
+  background: #303030;
 }
 
 .file-list td {
-  padding: 5px 5px;
-}
-
-.file-list-collapsed {
-  width: 40%;
+  padding: 10px 10px;
+  cursor: pointer;
 }
 
 .previewer-pane {
-  width: 0%;
-  height: 300px;
-  border: 1px solid rgb(20, 20, 20);
-  animation: appear 0.2s forwards;
+  background-color: #0000009a;
+  position: fixed;
+  top: 0%;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0%;
+  text-align: center;
+  transition: all 0.2s ease-out;
+  transition-property: visibility, opacity;
 }
 
-.hidden {
-  display: none;
+.previewer-pane img {
+  object-fit: contain;
+  height: 100%;
+  width: 100%;
 }
 
-.shrink {
-  animation: shrink 0.2s forwards;
-}
-
-/* Animations */
-@keyframes appear {
-  to {
-    width: 300px;
-    margin-left: 10px;
-  }
-}
-
-@keyframes shrink {
-  to {
-    width: calc(90% - 300px);
-  }
+.unhide {
+  visibility: visible;
+  opacity: 100%;
+  transition: all 0.2s ease-in;
+  transition-property: visibility, opacity;
 }
