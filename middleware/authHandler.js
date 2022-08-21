@@ -1,4 +1,4 @@
-const { discord, server } = require('../config.json');
+const { discord, server, service } = require('../config.json');
 const express = require('express');
 const snekfetch = require('snekfetch'); /** @TODO bad */
 const jwt = require('jsonwebtoken');
@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 const handler = express.Router();
 const CLIENT_ID = discord.client_id;
 const CLIENT_SECRET = discord.client_secret;
-const REDIRECT_URL = process.platform === 'win32' ? 'http://localhost:9004/auth/handshake' : 'LIVE DOMAIN';
+const REDIRECT_URL = (process.platform === 'win32' ? 'http://localhost:9004' : service.domain) + '/auth/handshake';
 const API_URL = 'https://discordapp.com/api/v8';
 const DISCORD_URL = `https://discordapp.com/api/oauth2/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_URL)}&response_type=code&scope=identify&prompt=none`;
 
