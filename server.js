@@ -13,7 +13,10 @@ const app = express();
 // Configuring Server
 const storagePath = directory.startsWith('.') ? __dirname + directory.substring(1) : directory;
 
-app.engine('.hbs', handlebars({ extname: '.hbs' }));
+app.engine('.hbs', handlebars({
+  extname: '.hbs',
+  defaultLayout: ''
+}));
 app.set('view engine', '.hbs');
 app.use(express.static(`${__dirname}/assets`));
 app.use(express.static(storagePath));

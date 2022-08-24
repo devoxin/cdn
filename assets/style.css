@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+body, html {
+  overflow: hidden;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto Light', sans-serif;
@@ -26,6 +30,11 @@ body {
   -moz-user-select: none;
   -ms-user-select: none;
   -webkit-user-select: none;
+}
+
+.nav-menu {
+  visibility: hidden;
+  vertical-align: middle;
 }
 
 .nav-buttons {
@@ -165,15 +174,76 @@ body {
   background-color: #353535;
 }
 
-.file-list {
+.dropzone {
+  background-color: #505050a2;
+  position: fixed;
+  display: flex;
+  margin-top: 20px;
+  top: calc(75px + ((100% - 75px) / 2) - 100px); /* margin + ((remaining parent width - margin / 2) - half_of_div_width) */
+  left: calc(300px + ((100% - 300px) / 2) - 225px);
+  height: 200px;
+  width: 450px;
+  border-radius: 10px;
+  font-size: 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  line-height: 2em;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s cubic-bezier(.77, .77, 0, 1);
+  transition-property: visibility, width, height, left, top, opacity;
+}
+
+.dropzone * {
+  pointer-events: none;
+}
+
+.dropzone i {
+  font-size: 96px;
+}
+
+.file-container {
   align-self: flex-start;
-  flex-grow: 1;
-  margin: 20px 20px 0px 20px;
+  flex: 1;
+  overflow-y: auto;
+  height: 100%;
+  max-height: 100%;
+}
+
+.file-container::-webkit-scrollbar {
+  width: 15px;
+  background-color: #404040;
+}
+
+.file-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.file-container::-webkit-scrollbar-thumb {
+  background-color: #505050;
+}
+
+.file-container::-webkit-scrollbar-thumb:hover {
+  background-color: #707070;
+}
+
+.file-container::-webkit-scrollbar-thumb:active {
+  background-color: #606060;
+}
+
+.file-list {
+  width: calc(100% - 40px);
+  margin: 20px 20px 20px 20px;
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
   border-spacing: 0;
   text-align: right;
   table-layout: auto;
+}
+
+.file-list tr {
+  width: 100%;
 }
 
 .file-list td:first-child, .file-list th:first-child {
@@ -204,11 +274,11 @@ body {
 .previewer-pane {
   background-color: #0000009a;
   position: fixed;
-  top: 0%;
+  top: 0;
   width: 100%;
   height: 100%;
   visibility: hidden;
-  opacity: 0%;
+  opacity: 0;
   text-align: center;
   transition: all 0.2s ease-out;
   transition-property: visibility, opacity;
@@ -220,9 +290,64 @@ body {
   width: 100%;
 }
 
-.unhide {
+.unhide-slide {
+  left: 0 !important;
+  visibility: visible !important;
+}
+
+.unhide-opacity {
   visibility: visible;
   opacity: 100%;
   transition: all 0.2s ease-in;
   transition-property: visibility, opacity;
+}
+
+.unhide-scale {
+  visibility: visible;
+  left: 320px;
+  top: 75px;
+  height: calc(100% - 115px);
+  width: calc(100% - 340px);
+  opacity: 100%;
+  /* transition: all 0.3s cubic-bezier(0,1.51,.77,.77); */
+  transition: all 0.3s ease-out;
+  transition-property: visibility, width, height, left, top, opacity;
+}
+
+td progress {
+  display: inline-block;
+  margin-left: 15px;
+  width: 100px;
+  border: 1px solid #404040;
+  background-color: #272727;
+  color: #1E90FF;
+}
+
+td progress::-moz-progress-bar {
+  background-color: #272727;
+  background: #1E90FF;
+}
+
+td progress::-webkit-progress-bar {
+  background-color: #272727;
+}
+
+td progress::-webkit-progress-value {
+  background: #1E90FF;
+}
+
+@media only screen and (max-width: 600px) {
+  .nav-menu {
+    visibility: visible;
+    margin-right: 10px;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -300px;
+    height: 100%;
+    visibility: hidden;
+    transition: all 0.4s ease;
+    transition-property: left, visibility;
+  }
 }
