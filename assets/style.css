@@ -191,7 +191,7 @@ body {
   line-height: 2em;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.6s cubic-bezier(.77, .77, 0, 1);
+  transition: all 0.3s cubic-bezier(.77, .77, 0, 1);
   transition-property: visibility, width, height, left, top, opacity;
 }
 
@@ -310,7 +310,7 @@ body {
   width: calc(100% - 340px);
   opacity: 100%;
   /* transition: all 0.3s cubic-bezier(0,1.51,.77,.77); */
-  transition: all 0.3s ease-out;
+  transition: all 0.2s ease-out;
   transition-property: visibility, width, height, left, top, opacity;
 }
 
