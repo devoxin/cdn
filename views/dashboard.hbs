@@ -1,41 +1,46 @@
 {{#> partialhead}}
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-<script src="filepreviewer.js"></script>
+<script src="d.js"></script>
 {{/partialhead}}
 
 <body>
-  {{> navbar}}
+  {{> hbnav}}
   <div class="dashboard-container">
+    <div class="dropzone" ondrop="onFileDragDrop(event)">
+      <i class="material-icons">insert_drive_file</i>
+      Drop your file here to upload!
+    </div>
     <div class="sidebar">
       <button>Account</button>
       <button>Files</button>
     </div>
-    <table class="file-list">
-      <tr>
-        <th>Name</th>
-        <th>Added</th>
-        <th>Expires</th>
-      </tr>
-      <tr>
-        <td onclick="preview(this)">
-          <i class="material-icons">folder</i>
-          test
-        </td>
-        <td>2022-08-21 21:37</td>
-        <td>2022-08-21 22:16</td>
-      </tr>
-      <tr>
-        <td onclick="preview(this)">
-          <i class="material-icons">insert_drive_file</i>
-          test.png
-        </td>
-        <td>2022-08-21 21:37</td>
-        <td>2022-08-21 22:16</td>
-      </tr>
-      <!-- files -->
-    </table>
-    <div class="previewer-pane" onclick="hide(this)">
-      <img src="/test.jpg">
+    <div class="file-container">
+      <table class="file-list">
+        <tr>
+          <th>Name</th>
+          <th>Modified</th>
+          <th>Expires</th>
+        </tr>
+        <tr>
+          <td onclick="preview(this)">
+            <i class="material-icons">folder</i>
+            test
+          </td>
+          <td>2022-08-21 21:37</td>
+          <td>2022-08-21 22:16</td>
+        </tr>
+        <tr>
+          <td onclick="preview(this)">
+            <i class="material-icons">insert_drive_file</i>
+            test.png
+          </td>
+          <td>2022-08-21 21:37</td>
+          <td>2022-08-21 22:16</td>
+        </tr>
+      </table>
     </div>
+  </div>
+  <div class="previewer-pane" onclick="previewHide(this)">
+    <img src="/test.jpg">
   </div>
 </body>
