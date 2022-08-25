@@ -4,15 +4,15 @@
 {{/partialhead}}
 
 <body>
-  {{> hbnav}}
   <div class="dashboard-container">
     <div class="dropzone" ondrop="onFileDragDrop(event)">
       <i class="material-icons">insert_drive_file</i>
       Drop your file here to upload!
     </div>
     <div class="sidebar">
+      <span>Dashboard</span>
       <button>Account</button>
-      <button>Files</button>
+      <button class="selected">Files</button>
     </div>
     <div class="file-container">
       <table class="file-list">
@@ -22,7 +22,7 @@
           <th>Expires</th>
         </tr>
         <tr>
-          <td onclick="preview(this)">
+          <td ondblclick="preview(this)">
             <i class="material-icons">folder</i>
             test
           </td>
@@ -30,7 +30,7 @@
           <td>2022-08-21 22:16</td>
         </tr>
         <tr>
-          <td onclick="preview(this)">
+          <td ondblclick="preview(this)">
             <i class="material-icons">insert_drive_file</i>
             test.png
           </td>
