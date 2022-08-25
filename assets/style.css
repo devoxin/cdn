@@ -19,7 +19,8 @@ body {
   justify-content: space-between;
   height: 75px;
   background: #3f4041;
-  box-shadow: 0px 1px 10px 1px rgb(20, 20, 20);
+  /* box-shadow: 0px 1px 10px 1px rgb(20, 20, 20); */
+  border-bottom: 1px solid #101010;
   z-index: 10;
 }
 
@@ -127,7 +128,7 @@ body {
 
 /* Dashboard */
 .dashboard-container {
-  height: calc(100% - 75px);
+  height: 100%;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -135,7 +136,17 @@ body {
 
 .sidebar {
   background-color: #303030;
-  width: 300px;
+  width: 200px;
+  border-right: 1px solid #101010;
+}
+
+.sidebar span {
+  display: block;
+  width: 100%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 22px;
+  border-bottom: 1px solid #252525;
 }
 
 .sidebar button {
@@ -150,14 +161,20 @@ body {
   width: 100%;
   height: 50px;
   transition: background-color 0.2s;
+  text-align: left;
+  padding-left: 40px;
+}
+
+.selected {
+  background-color: #272727 !important;
 }
 
 .sidebar button::before {
   position: absolute;
-  display: inline-block;
-  content: '';
+  display: block;
   left: 0;
-  transition: width 0.3s ease 0s, left 0.3s ease 0s;
+  content: '';
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 .sidebar button:hover {
@@ -168,6 +185,7 @@ body {
 .sidebar button:hover::before {
   content: '> ';
   left: 10px;
+  width: calc(100% - 10px);
 }
 
 .sidebar button:active {
@@ -176,13 +194,12 @@ body {
 
 .dropzone {
   background-color: #505050a2;
-  position: fixed;
+  position: absolute;
   display: flex;
-  margin-top: 20px;
-  top: calc(75px + ((100% - 75px) / 2) - 100px); /* margin + ((remaining parent width - margin / 2) - half_of_div_width) */
-  left: calc(300px + ((100% - 300px) / 2) - 225px);
+  top: calc(20px + ((100% - 20px) / 2) - 100px); /* margin + ((remaining parent width - margin / 2) - half_of_div_width) */
+  left: calc(20px + ((100% - 20px) / 2) - 250px);
   height: 200px;
-  width: 450px;
+  width: 500px;
   border-radius: 10px;
   font-size: 32px;
   flex-direction: column;
@@ -193,6 +210,7 @@ body {
   visibility: hidden;
   transition: all 0.3s cubic-bezier(.77, .77, 0, 1);
   transition-property: visibility, width, height, left, top, opacity;
+  z-index: 10;
 }
 
 .dropzone * {
@@ -304,10 +322,10 @@ body {
 
 .unhide-scale {
   visibility: visible;
-  left: 320px;
-  top: 75px;
-  height: calc(100% - 115px);
-  width: calc(100% - 340px);
+  top: 20px;
+  left: 20px;
+  height: calc(100% - 40px);
+  width: calc(100% - 40px);
   opacity: 100%;
   /* transition: all 0.3s cubic-bezier(0,1.51,.77,.77); */
   transition: all 0.2s ease-out;
