@@ -1,5 +1,24 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
+:root {
+  --body-dark: #272727;
+  --border-dark: #101010;
+  --navbar-background-dark: #3f4041;
+  --dropzone-background-dark: #505050a2;
+  --sidebar-dark: #303030;
+  --sidebar-header-dark: #252525;
+  --scrollbar-track-dark: #404040;
+  --scrollbar-thumb-dark: #505050;
+  --scrollbar-thumb-hover-dark: #707070;
+  --scrollbar-thumb-active-dark: #606060;
+  --table-header-dark: #191919;
+  --table-odd-cell-dark: #303030;
+  --preview-overlay-dark: #0000009a;
+  --progress-border-dark: #404040;
+  --progress-background-dark: #272727;
+  --progress-accent-dark: #1E90FF;
+}
+
 body, html {
   overflow: hidden;
 }
@@ -193,7 +212,7 @@ body {
 }
 
 .dropzone {
-  background-color: #505050a2;
+  background-color: var(--dropzone-background-dark);
   position: absolute;
   display: flex;
   top: calc(20px + ((100% - 20px) / 2) - 100px); /* margin + ((remaining parent width - margin / 2) - half_of_div_width) */
@@ -231,7 +250,7 @@ body {
 
 .file-container::-webkit-scrollbar {
   width: 15px;
-  background-color: #404040;
+  background-color: var(--scrollbar-track-dark);
 }
 
 .file-container::-webkit-scrollbar-track {
@@ -239,15 +258,15 @@ body {
 }
 
 .file-container::-webkit-scrollbar-thumb {
-  background-color: #505050;
+  background-color: var(--scrollbar-thumb-dark);
 }
 
 .file-container::-webkit-scrollbar-thumb:hover {
-  background-color: #707070;
+  background-color: var(--scrollbar-thumb-hover-dark);
 }
 
 .file-container::-webkit-scrollbar-thumb:active {
-  background-color: #606060;
+  background-color: var(--scrollbar-thumb-active-dark);
 }
 
 .file-list {
@@ -275,13 +294,13 @@ body {
 }
 
 .file-list th {
-  background: rgb(25, 25, 25);;
+  background: var(--table-header-dark);
   padding: 10px;
   font-weight: 100;
 }
 
 .file-list tr:nth-child(odd) {
-  background: #303030;
+  background: var(--table-odd-cell-dark);
 }
 
 .file-list td {
@@ -290,7 +309,7 @@ body {
 }
 
 .previewer-pane {
-  background-color: #0000009a;
+  background-color: var(--preview-overlay-dark);
   position: fixed;
   top: 0;
   width: 100%;
@@ -336,22 +355,22 @@ td progress {
   display: inline-block;
   margin-left: 15px;
   width: 100px;
-  border: 1px solid #404040;
-  background-color: #272727;
-  color: #1E90FF;
+  border: 1px solid var(--progress-border-dark);
+  background-color: var(--progress-background-dark);
+  color: var(--progress-accent-dark);
 }
 
 td progress::-moz-progress-bar {
-  background-color: #272727;
-  background: #1E90FF;
+  background-color: var(--progress-background-dark);
+  color: var(--progress-accent-dark);
 }
 
 td progress::-webkit-progress-bar {
-  background-color: #272727;
+  background-color: var(--progress-background-dark);
 }
 
 td progress::-webkit-progress-value {
-  background: #1E90FF;
+  color: var(--progress-accent-dark);
 }
 
 @media only screen and (max-width: 600px) {
@@ -362,10 +381,9 @@ td progress::-webkit-progress-value {
 
   .sidebar {
     position: fixed;
-    left: -300px;
     height: 100%;
-    visibility: hidden;
-    transition: all 0.4s ease;
+    left: -202px;
+    transition: all 0.1s ease-out;
     transition-property: left, visibility;
   }
 }
