@@ -1,4 +1,5 @@
 let dragTimer = null;
+let isSidebarSwipe = false, swipeStart = 0;
 
 function toggleSidebar () {
   document.querySelector('.sidebar').classList.toggle('unhide-slide');
@@ -83,7 +84,7 @@ function createFileUpload (file) {
   }, 110);
 }
 
-function createElement(element, options) {
+function createElement (element, options) {
   return Object.assign(document.createElement(element), options);
 }
 
@@ -100,9 +101,45 @@ function formatDate (date, format) {
   return format.replace(/HH|MM|mm|dd|yyyy|yy/g, matched => formatMap[matched]);
 }
 
-function padValue(value) {
+function padValue (value) {
   return (value < 10) ? '0' + value : value;
+}
+
+function onTouchStart (event) {
+  isSidebarSwipe = event.targetTouches[0].clientX < 200;
+  swipeStart = event.targetTouches[0].clientX;
+}
+
+function onTouchMove (event) {
+  if (isSidebarSwipe) {
+    event.preventDefault();
+    const x = event.touches[0].clientX;
+    const sb = document.querySelector('.sidebar')
+    const difference = x - swipeStart;
+    // this is broken for close swipes
+
+    const left1 = Math.max(Math.min(difference, 202), 0);
+    const left = Math.min(-202 + left1, 0);
+    // console.log("left: " + left);
+    sb.style.left = left + 'px';
+  }
+}
+
+function onTouchCancel (event) {
+  if (isSidebarSwipe) {
+    const sb = document.querySelector('.sidebar');
+    const left = parseInt(sb.style.left);
+    if (left >= -130 && left < 0) {
+      sb.style.left = '0px';
+    } else if (left < -130) {
+      sb.style.left = '-202px';
+    }
+  }
 }
 
 window.addEventListener('dragover', onFileDrag);
 window.addEventListener('dragleave', onFileDragLeave);
+// window.addEventListener('touchstart', onTouchStart);
+// window.addEventListener('touchmove', onTouchMove, { passive: false });
+// window.addEventListener('touchend', onTouchCancel);
+// window.addEventListener('touchcancel', onTouchCancel);
