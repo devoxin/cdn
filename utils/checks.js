@@ -8,7 +8,7 @@ const db = new Database();
  * @returns {Promise<boolean>} Whether the user is authorized.
  */
 function isUserAuthorized (id) {
-  return db.users.findOne({ _id: id }).then(result => !!result);
+  return db.users.findOne({ _id: id }).then(Boolean);
 }
 
 /**
@@ -17,7 +17,7 @@ function isUserAuthorized (id) {
  * @returns {Promise<boolean>} Whether the key is authorized.
  */
 function isKeyAuthorized (key) {
-  return db.users.findOne({ uploadKey: key }).then(result => !!result);
+  return db.users.findOne({ uploadKey: key }).then(Boolean);
 }
 
 /**
@@ -29,7 +29,7 @@ function isKeyAuthorized (key) {
 function userHasFlag (id, flag) {
   // eslint-disable-next-line no-extra-parens
   // return db.users.findOne({ _id: id }).then(result => (result.flags & (1 << flag)) !== 0);
-  return db.users.findOne({ _id: id }).then(result => (result.flags & flag === flag));
+  return db.users.findOne({ _id: id }).then(result => (result.flags & flag) === flag));
 }
 
 module.exports = {
